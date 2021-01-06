@@ -1,0 +1,13 @@
+mixin rule_to_card(rule)
+    .box
+        - const titolo = rule.formatInterval() + ": zona " + rule.color;
+        h1.title.is-4=titolo
+        p
+            | #{rule.formatInterval()} sono in zona #{rule.color} 
+            if (rule.any)
+                |  tutte le regioni.
+            else
+                | le regioni: #{rule.regions.map(it => nomiFriendly[it]).join(", ")}.
+        if (rule.notes != "")
+            br
+            p: i Nota: #{rule.notes}

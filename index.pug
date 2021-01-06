@@ -1,0 +1,14 @@
+include includes/dati.pug
+doctype html
+head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title In che zona sono?
+    link(rel="stylesheet" href="/bulma.min.css")
+body
+    include includes/hero.pug
+    .section.container(style="text-align: center")
+        include includes/cartina.pug
+    include includes/card.pug
+    .section.container: each rule in data.reverse()
+        +rule_to_card(rule)

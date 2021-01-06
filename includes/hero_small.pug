@@ -1,0 +1,16 @@
+mixin hero_small()
+    a(href="/"): .hero-body
+        .container.has-text-centered
+            h1.title.is-size-1 In che zona siamo?
+            h2.subtitle InCheZonaSiamo.it
+    script(src="/script.js")
+
+mixin hero_small_rossa()
+    section.hero.is-primary.is-small.rossa
+        +hero_small()
+mixin hero_small_arancione()
+    section.hero.is-primary.is-small.arancione
+        +hero_small()
+mixin hero_small_gialla()
+    section.hero.is-primary.is-small.gialla
+        +hero_small()

@@ -1,0 +1,37 @@
+include dati.pug
+doctype html
+head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title In che zona siamo?
+    link(rel="stylesheet" href="/bulma.min.css")
+    link(rel="stylesheet" href="/custom.css")
+body
+    include hero_small.pug
+    include zona_rossa.pug
+    include zona_arancione.pug
+    include zona_gialla.pug
+    include card.pug
+    mixin sectionRegione(nomeRegione)
+        -
+            const nomeFriendly = nomiFriendly[nomeRegione];
+            const coloreZona = colorOf(nomeRegione);
+        case coloreZona
+            when "rossa"
+                +hero_small_rossa()
+            when "arancione"
+                +hero_small_arancione()
+            when "gialla"
+                +hero_small_gialla()
+        section.section.body
+            case coloreZona
+                when "rossa"
+                    +zona_rossa(nomeFriendly)
+                when "arancione"
+                    +zona_arancione(nomeFriendly)
+                when "gialla"
+                    +zona_gialla(nomeFriendly)
+            br
+            each rule in allRulesForRegion(nomeRegione).reverse()
+                +rule_to_card(rule)
+    script(src="/script.js")

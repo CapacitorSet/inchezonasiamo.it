@@ -1,0 +1,30 @@
+#title-zona-rossa > .title, #title-zona-rossa > .subtitle {
+    color: #e2001a;
+}
+#title-zona-arancione > .title, #title-zona-arancione > .subtitle {
+    color: #ee7f01;
+}
+#title-zona-gialla > .title, #title-zona-gialla > .subtitle {
+    color: #fbc02d;
+}
+
+.hero.rossa {
+    background-color: #e2001a;
+}
+.hero.arancione {
+    background-color: #ee7f01;
+}
+.hero.gialla {
+    background-color: #fbc02d;
+}
+
+.section.body {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ul-zona {
+    list-style-type: disc;
+    list-style-position: inside;
+}
