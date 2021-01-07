@@ -10,12 +10,7 @@ include dati.pug
             const nomeFriendly = nomiFriendly[nomeRegione];
             const coloreZona = colorOf(nomeRegione);
         doctype html
-        head
-            meta(charset="utf-8")
-            meta(name="viewport" content="width=device-width, initial-scale=1")
-            title In che zona siamo?
-            link(rel="stylesheet" href="/bulma.min.css")
-            link(rel="stylesheet" href="/custom.css")
+        include head.pug
         body
             case coloreZona
                 when "rossa"
@@ -35,4 +30,5 @@ include dati.pug
                 br
                 each rule in allRulesForRegion(nomeRegione).reverse()
                     +rule_to_card(rule)
+            include footer.pug
             script(src="/script.js" async)
