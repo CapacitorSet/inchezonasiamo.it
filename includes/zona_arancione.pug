@@ -2,6 +2,9 @@ mixin zona_arancione(nomeFriendly)
     .has-text-centered#title-zona-arancione
         h1.title.is-1 #{nomeFriendly}: zona arancione
         h2.subtitle Coprifuoco, divieto di spostarsi tra comuni.
+        .is-hidden-desktop
+            button.button(onclick="navigator.share({text: 'In "+nomeFriendly+"siamo in zona arancione: https://inchezonasiamo.it") Condividi
+            br
         br
 
     ul#ul-zona
