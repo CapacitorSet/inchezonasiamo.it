@@ -1,0 +1,49 @@
+mixin calendario(nomeRegione)
+    -
+        // Fix in modo da ritornare 0 di lunedì
+        function weekday(d) { return (d.getUTCDay() == 0) ? 6 : (d.getUTCDay() - 1); }
+
+        const data = new Date();
+        const mese = data.getMonth();
+        const dataAttuale = new Date();
+        dataAttuale.setUTCDate(1); // Inizia il primo del mese
+        const numCelleVuote = weekday(dataAttuale);
+    table.table.is-bordered.has-text-centered(style="margin-left: auto; margin-right: auto;")
+        thead: tr
+            th L
+            th M
+            th M
+            th G
+            th V
+            th S
+            th D
+        tbody
+            tr
+                - for (let i = 0; i < numCelleVuote; i++)
+                    td
+                - while (true) // Emula un do..while nel caso che il mese inizi di lunedì
+                    case colorOf(nomeRegione, dataAttuale)
+                        when "rossa"
+                            td.rossa=dataAttuale.getUTCDate()
+                        when "arancione"
+                            td.arancione=dataAttuale.getUTCDate()
+                        when "gialla"
+                            td.gialla=dataAttuale.getUTCDate()
+                        default
+                            td=dataAttuale.getUTCDate()
+                    - dataAttuale.setUTCDate(dataAttuale.getUTCDate() + 1)
+                    - if (weekday(dataAttuale) == 0) break;
+            - while (dataAttuale.getMonth() == mese)
+                tr
+                    - while (true)
+                        case colorOf(nomeRegione, dataAttuale)
+                            when "rossa"
+                                td.rossa=dataAttuale.getUTCDate()
+                            when "arancione"
+                                td.arancione=dataAttuale.getUTCDate()
+                            when "gialla"
+                                td.gialla=dataAttuale.getUTCDate()
+                            default
+                                td=dataAttuale.getUTCDate()
+                        - dataAttuale.setUTCDate(dataAttuale.getUTCDate() + 1)
+                        - if (weekday(dataAttuale) == 0 || dataAttuale.getMonth() != mese) break;

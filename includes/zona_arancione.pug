@@ -1,4 +1,6 @@
-mixin zona_arancione(nomeFriendly)
+include calendario.pug
+mixin zona_arancione(nomeRegione)
+    - const nomeFriendly = nomiFriendly[nomeRegione];
     .has-text-centered#title-zona-arancione
         h1.title.is-1 #{nomeFriendly}: zona arancione
         h2.subtitle Coprifuoco, divieto di spostarsi tra comuni.
@@ -6,6 +8,8 @@ mixin zona_arancione(nomeFriendly)
             button.button(onclick="navigator.share({text: 'In "+nomeFriendly+"siamo in zona arancione: https://inchezonasiamo.it") Condividi
             br
         br
+
+    +calendario(nomeRegione)
 
     ul#ul-zona
         li Vietato circolare dalle ore 22 alle ore 5 del mattino, salvo comprovati motivi di lavoro, necessità e salute.

@@ -12,6 +12,7 @@ body
     include zona_arancione.pug
     include zona_gialla.pug
     include card.pug
+    include calendario.pug
     mixin sectionRegione(nomeRegione)
         -
             const nomeFriendly = nomiFriendly[nomeRegione];
@@ -26,11 +27,11 @@ body
         section.section.body
             case coloreZona
                 when "rossa"
-                    +zona_rossa(nomeFriendly)
+                    +zona_rossa(nomeRegione)
                 when "arancione"
-                    +zona_arancione(nomeFriendly)
+                    +zona_arancione(nomeRegione)
                 when "gialla"
-                    +zona_gialla(nomeFriendly)
+                    +zona_gialla(nomeRegione)
             br
             each rule in allRulesForRegion(nomeRegione).reverse()
                 +rule_to_card(rule)

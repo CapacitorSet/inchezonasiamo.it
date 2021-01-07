@@ -1,4 +1,6 @@
-mixin zona_gialla(nomeFriendly)
+include calendario.pug
+mixin zona_gialla(nomeRegione)
+    - const nomeFriendly = nomiFriendly[nomeRegione];
     .has-text-centered#title-zona-gialla
         h1.title.is-1 #{nomeFriendly}: zona gialla
         h2.subtitle Coprifuoco, chiusura di bar e ristoranti alle 18.
@@ -6,6 +8,8 @@ mixin zona_gialla(nomeFriendly)
             button.button(onclick="navigator.share({text: 'In "+nomeFriendly+"siamo in zona gialla: https://inchezonasiamo.it") Condividi
             br
         br
+
+    +calendario(nomeRegione)
 
     ul#ul-zona
         li Vietato circolare dalle ore 22 alle ore 5 del mattino, salvo comprovati motivi di lavoro, necessità e salute.

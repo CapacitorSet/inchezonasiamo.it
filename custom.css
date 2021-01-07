@@ -18,6 +18,19 @@
     background-color: #fbc02d;
 }
 
+td.rossa {
+    background-color: #e2001a;
+    color: white;
+}
+td.arancione {
+    background-color: #ee7f01;
+    color: white;
+}
+td.gialla {
+    background-color: #fbc02d;
+    color: white;
+}
+
 .section.body {
     max-width: 900px;
     margin-left: auto;

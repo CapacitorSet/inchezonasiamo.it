@@ -1,4 +1,6 @@
-mixin zona_rossa(nomeFriendly)
+include calendario.pug
+mixin zona_rossa(nomeRegione)
+    - const nomeFriendly = nomiFriendly[nomeRegione];
     .has-text-centered#title-zona-rossa
         h1.title.is-1 #{nomeFriendly}: zona rossa
         h2.subtitle Vietato ogni spostamento, chiusi bar e ristoranti.
@@ -6,6 +8,8 @@ mixin zona_rossa(nomeFriendly)
             button.button(onclick="navigator.share({text: 'In "+nomeFriendly+"siamo in zona rossa: https://inchezonasiamo.it") Condividi
             br
         br
+
+    +calendario(nomeRegione)
 
     ul#ul-zona
         li È vietato ogni spostamento, anche all'interno del proprio Comune, in qualsiasi orario, salvo che per motivi di lavoro, necessità e salute; vietati gli spostamenti da una Regione all'altra e da un Comune all'altro.
