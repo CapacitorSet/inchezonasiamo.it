@@ -5,7 +5,7 @@ mixin zona_gialla(nomeRegione)
         h1.title.is-1 #{nomeFriendly}: zona gialla
         h2.subtitle Coprifuoco, chiusura di bar e ristoranti alle 18.
         .is-hidden-desktop
-            button.button(onclick="navigator.share({text: 'In "+nomeFriendly+"siamo in zona gialla: https://inchezonasiamo.it") Condividi
+            button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona gialla: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi
             br
         br
 

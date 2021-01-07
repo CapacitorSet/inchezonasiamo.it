@@ -5,7 +5,7 @@ mixin zona_rossa(nomeRegione)
         h1.title.is-1 #{nomeFriendly}: zona rossa
         h2.subtitle Vietato ogni spostamento, chiusi bar e ristoranti.
         .is-hidden-desktop
-            button.button(onclick="navigator.share({text: 'In "+nomeFriendly+"siamo in zona rossa: https://inchezonasiamo.it") Condividi
+            button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona rossa: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi
             br
         br
 
