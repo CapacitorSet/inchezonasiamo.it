@@ -12,3 +12,4 @@ body
     include includes/card.pug
     .section.container: each rule in data.reverse()
         +rule_to_card(rule)
+    script(src="/script.js" async)
