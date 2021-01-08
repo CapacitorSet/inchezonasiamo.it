@@ -61,9 +61,9 @@
                 throw new Error("Healthcheck failed, no regions selected");
         }
         dateIsContained(date) {
-            if (date.getTime() < this.from.getTime())
+            if (date < this.from)
                 return false;
-            if (this.hasEnd && date.getTime() >= this.to.getTime())
+            if (this.hasEnd && date >= this.to)
                 return false;
             return true;
         }
