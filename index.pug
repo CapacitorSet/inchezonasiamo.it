@@ -1,12 +1,13 @@
 include includes/dati.pug
-doctype html
 include includes/head.pug
+include includes/card.pug
+doctype html
 body
     include includes/hero.pug
-    .section.container(style="text-align: center")
-        include includes/cartina.pug
-    include includes/card.pug
-    .section.container: each rule in data.reverse()
-        +rule_to_card(rule)
+    .tile.is-ancestor
+        .section.tile.is-child.is-8(style="text-align: center")
+            include includes/cartina.pug
+        .section.tile.is-child.is-4: each rule in data.reverse()
+            +rule_to_card(rule)
     include includes/footer.pug
     script(src="/script.js" async)
