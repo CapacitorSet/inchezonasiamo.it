@@ -9,6 +9,35 @@
         {from: "2021-01-07", to: "2021-01-08", color: "gialla", any: true, notes: "Sono vietati gli spostamenti tra regioni."},
         {from: "2021-01-09", to: "2021-01-10", color: "arancione", any: true},
     ];
+    const nomiFriendly = {
+        abruzzo: "Abruzzo",
+        basilicata: "Basilicata",
+        calabria: "Calabria",
+        campania: "Campania",
+        emiliaromagna: "Emilia Romagna",
+        friuliveneziagiulia: "Friuli Venezia Giulia",
+        lazio: "Lazio",
+        liguria: "Liguria",
+        lombardia: "Lombardia",
+        marche: "Marche",
+        molise: "Molise",
+        piemonte: "Piemonte",
+        puglia: "Puglia",
+        sardegna: "Sardegna",
+        sicilia: "Sicilia",
+        toscana: "Toscana",
+        bolzano: "Trentino prov. Bolzano",
+        trento: "Trentino prov. Trento",
+        umbria: "Umbria",
+        valdaosta: "Valle d'Aosta",
+        veneto: "Veneto",
+    };
+    const colori = {
+        rossa: "#e2001a",
+        arancione: "#ee7f01",
+        gialla: "#fbc02d"
+    };
+    const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
     class Regola {
         constructor(src) {
             this.color = src.color;
@@ -24,6 +53,10 @@
             this.any = src.any || false;
             this.regions = src.regions || [];
             this.notes = src.notes || "";
+            if (this.regions.some(region => !nomiFriendly[region]))
+                throw new Error("Healthcheck failed, invalid regions: " + this.regions.filter(region => !nomiFriendly[region]).join(","))
+            if (this.regions.length == 0 && !this.any)
+                throw new Error("Healthcheck failed, no regions selected");
         }
         dateIsContained(date) {
             if (date.getTime() < this.from.getTime())
@@ -54,35 +87,6 @@
         }
         return color;
     }
-    const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
     function formatDate(date) {
         return date.getDate() + " " + months[date.getMonth()];
     }
-    const nomiFriendly = {
-        abruzzo: "Abruzzo",
-        basilicata: "Basilicata",
-        calabria: "Calabria",
-        campania: "Campania",
-        emiliaromagna: "Emilia Romagna",
-        friuliveneziagiulia: "Friuli Venezia Giulia",
-        lazio: "Lazio",
-        liguria: "Liguria",
-        lombardia: "Lombardia",
-        marche: "Marche",
-        molise: "Molise",
-        piemonte: "Piemonte",
-        puglia: "Puglia",
-        sardegna: "Sardegna",
-        sicilia: "Sicilia",
-        toscana: "Toscana",
-        bolzano: "Trentino prov. Bolzano",
-        trento: "Trentino prov. Trento",
-        umbria: "Umbria",
-        valdaosta: "Valle d'Aosta",
-        veneto: "Veneto",
-    };
-    const colori = {
-        rossa: "#e2001a",
-        arancione: "#ee7f01",
-        gialla: "#fbc02d"
-    };
