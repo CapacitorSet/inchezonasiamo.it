@@ -85,6 +85,8 @@
         return data.filter(item => item.regionIsAffected(region));
     }
     function colorOf(region, date = new Date()) {
+        if (!Object.keys(nomiFriendly).includes(region))
+            throw new Error("Unknown region " + region);
         let color;
         for (const item of data) {
             if (item.regionIsAffected(region) && item.dateIsContained(date))
