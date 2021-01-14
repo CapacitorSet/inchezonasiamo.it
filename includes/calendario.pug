@@ -22,13 +22,23 @@ mixin calendario(nomeRegione)
                 - for (let i = 0; i < numCelleVuote; i++)
                     td
                 - while (true) // Emula un do..while nel caso che il mese inizi di lunedì
-                    case colorOf(nomeRegione, dataAttuale)
+                    - const rule = ruleFor(nomeRegione, dataAttuale)
+                    case rule.color
                         when "rossa"
-                            td.rossa=dataAttuale.getUTCDate()
+                            if rule.maybe
+                                td.rossa.maybe=dataAttuale.getUTCDate()
+                            else
+                                td.rossa=dataAttuale.getUTCDate()
                         when "arancione"
-                            td.arancione=dataAttuale.getUTCDate()
+                            if rule.maybe
+                                td.arancione.maybe=dataAttuale.getUTCDate()
+                            else
+                                td.arancione=dataAttuale.getUTCDate()
                         when "gialla"
-                            td.gialla=dataAttuale.getUTCDate()
+                            if rule.maybe
+                                td.gialla.maybe=dataAttuale.getUTCDate()
+                            else
+                                td.gialla=dataAttuale.getUTCDate()
                         default
                             td=dataAttuale.getUTCDate()
                     - dataAttuale.setUTCDate(dataAttuale.getUTCDate() + 1)
@@ -36,13 +46,23 @@ mixin calendario(nomeRegione)
             - while (dataAttuale.getMonth() == mese)
                 tr
                     - while (true)
-                        case colorOf(nomeRegione, dataAttuale)
+                        - const rule = ruleFor(nomeRegione, dataAttuale)
+                        case rule.color
                             when "rossa"
-                                td.rossa=dataAttuale.getUTCDate()
+                                if rule.maybe
+                                    td.rossa.maybe=dataAttuale.getUTCDate()
+                                else
+                                    td.rossa=dataAttuale.getUTCDate()
                             when "arancione"
-                                td.arancione=dataAttuale.getUTCDate()
+                                if rule.maybe
+                                    td.arancione.maybe=dataAttuale.getUTCDate()
+                                else
+                                    td.arancione=dataAttuale.getUTCDate()
                             when "gialla"
-                                td.gialla=dataAttuale.getUTCDate()
+                                if rule.maybe
+                                    td.gialla.maybe=dataAttuale.getUTCDate()
+                                else
+                                    td.gialla=dataAttuale.getUTCDate()
                             default
                                 td=dataAttuale.getUTCDate()
                         - dataAttuale.setUTCDate(dataAttuale.getUTCDate() + 1)

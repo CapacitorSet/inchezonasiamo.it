@@ -30,6 +30,18 @@ td.gialla {
     background-color: #fbc02d;
     color: white;
 }
+td.rossa.maybe {
+    background-color: #e2001aaa;
+    color: white;
+}
+td.arancione.maybe {
+    background-color: #ee7f01aa;
+    color: white;
+}
+td.gialla.maybe {
+    background-color: #fbc02daa;
+    color: white;
+}
 
 .section.body {
     max-width: 900px;
