@@ -7,4 +7,5 @@ section.hero.is-primary.is-small
                     option(value="" selected disabled) Inserisci la tua regione...
                     for nomeFriendly, nomeOption in nomiFriendly
                         option(value=nomeOption)=nomeFriendly
-            h2.subtitle
+            // h2.subtitle
+            p="Ultimo aggiornamento: " + new Date().toLocaleString("it-IT", {timeZone: "Europe/London", day: '2-digit', month: 'long', hour: 'numeric', minute: 'numeric'})

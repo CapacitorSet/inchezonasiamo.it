@@ -10,6 +10,8 @@ mixin zona_gialla(nomeRegione)
         br
 
     +calendario(nomeRegione)
+    p.has-text-centered="Ultimo aggiornamento: " + new Date().toLocaleString("it-IT", {timeZone: "Europe/London", day: '2-digit', month: 'long', hour: 'numeric', minute: 'numeric'})
+    br
 
     ul#ul-zona
         li Vietato spostarsi tra regioni.
