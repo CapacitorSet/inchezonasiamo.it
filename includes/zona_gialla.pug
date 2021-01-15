@@ -1,39 +1,42 @@
 include calendario.pug
 mixin zona_gialla(nomeRegione)
     - const nomeFriendly = nomiFriendly[nomeRegione];
-    .has-text-centered#title-zona-gialla
-        h1.title.is-1 #{nomeFriendly}: zona gialla
-        h2.subtitle Coprifuoco, chiusura di bar e ristoranti alle 18.
-        .is-hidden-desktop
-            button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona gialla: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi
+    article
+        header.has-text-centered#title-zona-gialla
+            h1.title.is-1 #{nomeFriendly}: zona gialla
+            h2.subtitle Coprifuoco, chiusura di bar e ristoranti alle 18.
+            .is-hidden-desktop
+                button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona gialla: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi
+                br
             br
+
+            +calendario(nomeRegione)
+            aside: p.has-text-centered
+                | Ultimo aggiornamento: 
+                time(pubdate datetime=(new Date().toISOString()))=new Date().toLocaleString("it-IT", {timeZone: "Europe/London", day: '2-digit', month: 'long', hour: 'numeric', minute: 'numeric'})
         br
 
-    +calendario(nomeRegione)
-    p.has-text-centered="Ultimo aggiornamento: " + new Date().toLocaleString("it-IT", {timeZone: "Europe/London", day: '2-digit', month: 'long', hour: 'numeric', minute: 'numeric'})
-    br
-
-    ul#ul-zona
-        li Raccomandazione di non spostarsi se non per motivi di salute, lavoro, studio, situazioni di necessità.
-        if ((new Date()) >= (new Date("2021-01-16")))
-            li Spostamenti liberi all'interno della regione.
-            li Possibile raggiungere le seconde case se all'interno della regione.
-            li Aperti tutti i negozi, tranne i grandi magazzini e i centri commerciali nel weekend.
-            // Todo: aggiornare? Potrebbe essere valido solo per le bevande
-            li Per bar, ristoranti, pasticcerie e gelaterie, dopo le 18 consentito solo il servizio a domicilio.
-            li Consentito ricevere in casa non più di due persone non conviventi; sono esclusi dal conteggio i minori di 14 anni e i disabili.
-            li Possibile visitare una sola abitazione privata una volta al giorno tra le 5 e le 22.
-            // Todo: aggiornare
-            // li Didattica a distanza per le scuole superiori, fatta eccezione per gli studenti con disabilità e in caso di uso di laboratori; didattica in presenza per scuole dell'infanzia, scuole elementari e scuole medie. Chiuse le università, salvo alcune attività per le matricole e per i laboratori.
-            li Aperti i musei.
-            li Chiusi i cinema, teatri, mostre, fiere e congressi.
-        else
-            li Vietato spostarsi tra regioni.
-            li Vietato circolare dalle ore 22 alle ore 5 del mattino, salvo comprovati motivi di lavoro, necessità e salute.
-            li Chiusura dei centri commerciali nei giorni festivi e prefestivi ad eccezione delle farmacie, parafarmacie, punti vendita di generi alimentari, tabaccherie ed edicole al loro interno.
-            li Chiusura di musei e mostre.
-            li Didattica a distanza per le scuole superiori, fatta eccezione per gli studenti con disabilità e in caso di uso di laboratori; didattica in presenza per scuole dell'infanzia, scuole elementari e scuole medie. Chiuse le università, salvo alcune attività per le matricole e per i laboratori.
-            li Riduzione fino al 50% per il trasporto pubblico, ad eccezione dei mezzi di trasporto scolastico.
-            li Sospensione di attività di sale giochi, sale scommesse, bingo e slot machine anche nei bar e tabaccherie.
-            li Chiusura di bar e ristoranti alle ore 18. L'asporto è consentito fino alle ore 22. Per la consegna a domicilio non ci sono restrizioni.
-            li Restano chiuse piscine, palestre, teatri, cinema. Restano aperti i centri sportivi.
+        section: ul#ul-zona
+            li Raccomandazione di non spostarsi se non per motivi di salute, lavoro, studio, situazioni di necessità.
+            if ((new Date()) >= (new Date("2021-01-16")))
+                li Spostamenti liberi all'interno della regione.
+                li Possibile raggiungere le seconde case se all'interno della regione.
+                li Aperti tutti i negozi, tranne i grandi magazzini e i centri commerciali nel weekend.
+                // Todo: aggiornare? Potrebbe essere valido solo per le bevande
+                li Per bar, ristoranti, pasticcerie e gelaterie, dopo le 18 consentito solo il servizio a domicilio.
+                li Consentito ricevere in casa non più di due persone non conviventi; sono esclusi dal conteggio i minori di 14 anni e i disabili.
+                li Possibile visitare una sola abitazione privata una volta al giorno tra le 5 e le 22.
+                // Todo: aggiornare
+                // li Didattica a distanza per le scuole superiori, fatta eccezione per gli studenti con disabilità e in caso di uso di laboratori; didattica in presenza per scuole dell'infanzia, scuole elementari e scuole medie. Chiuse le università, salvo alcune attività per le matricole e per i laboratori.
+                li Aperti i musei.
+                li Chiusi i cinema, teatri, mostre, fiere e congressi.
+            else
+                li Vietato spostarsi tra regioni.
+                li Vietato circolare dalle ore 22 alle ore 5 del mattino, salvo comprovati motivi di lavoro, necessità e salute.
+                li Chiusura dei centri commerciali nei giorni festivi e prefestivi ad eccezione delle farmacie, parafarmacie, punti vendita di generi alimentari, tabaccherie ed edicole al loro interno.
+                li Chiusura di musei e mostre.
+                li Didattica a distanza per le scuole superiori, fatta eccezione per gli studenti con disabilità e in caso di uso di laboratori; didattica in presenza per scuole dell'infanzia, scuole elementari e scuole medie. Chiuse le università, salvo alcune attività per le matricole e per i laboratori.
+                li Riduzione fino al 50% per il trasporto pubblico, ad eccezione dei mezzi di trasporto scolastico.
+                li Sospensione di attività di sale giochi, sale scommesse, bingo e slot machine anche nei bar e tabaccherie.
+                li Chiusura di bar e ristoranti alle ore 18. L'asporto è consentito fino alle ore 22. Per la consegna a domicilio non ci sono restrizioni.
+                li Restano chiuse piscine, palestre, teatri, cinema. Restano aperti i centri sportivi.

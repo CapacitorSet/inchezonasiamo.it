@@ -1,32 +1,35 @@
 include calendario.pug
 mixin zona_rossa(nomeRegione)
     - const nomeFriendly = nomiFriendly[nomeRegione];
-    .has-text-centered#title-zona-rossa
-        h1.title.is-1 #{nomeFriendly}: zona rossa
-        h2.subtitle Vietato ogni spostamento, chiusi bar e ristoranti.
-        .is-hidden-desktop
-            button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona rossa: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi
+    article
+        header.has-text-centered#title-zona-rossa
+            h1.title.is-1 #{nomeFriendly}: zona rossa
+            h2.subtitle Vietato ogni spostamento, chiusi bar e ristoranti.
+            .is-hidden-desktop
+                button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona rossa: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi
+                br
             br
+
+            +calendario(nomeRegione)
+            aside: p.has-text-centered
+                | Ultimo aggiornamento: 
+                time(pubdate datetime=(new Date().toISOString()))=new Date().toLocaleString("it-IT", {timeZone: "Europe/London", day: '2-digit', month: 'long', hour: 'numeric', minute: 'numeric'})
         br
 
-    +calendario(nomeRegione)
-    p.has-text-centered="Ultimo aggiornamento: " + new Date().toLocaleString("it-IT", {timeZone: "Europe/London", day: '2-digit', month: 'long', hour: 'numeric', minute: 'numeric'})
-    br
-
-    ul#ul-zona
-        if ((new Date()) >= (new Date("2021-01-16")))
-            li È vietato ogni spostamento, anche all'interno del proprio Comune, in qualsiasi orario, salvo che per motivi di lavoro, necessità, salute, per far rientro alla propria residenza, domicilio o abitazione, o per il ricongiungimento con il partner.
-            li Consentito ricevere in casa non più di due persone non conviventi; sono esclusi dal conteggio i minori di 14 anni e i disabili.
-            li Possibile visitare una sola abitazione privata una volta al giorno tra le 5 e le 22.
-            li Chiuse le attività commerciali non essenziali: bar, ristoranti, negozi di ogni genere.
-            li Aperti alimentari, farmacie, librerie, negozi di intimo e di sport, cartolerie, negozi di giocattoli, ferramenta, barbieri e parrucchieri.
-            li In presenza le scuole dell'infanzia, elementari e prime medie.
-            li Sono chiusi musei e mostre; chiusi anche teatri, cinema, palestre, attività di sale giochi, sale scommesse, bingo, anche nei bar e nelle tabaccherie.
-        else
-            li È vietato ogni spostamento, anche all'interno del proprio Comune, in qualsiasi orario, salvo che per motivi di lavoro, necessità e salute.
-            li Chiusura di bar e ristoranti, 7 giorni su 7. L'asporto è consentito fino alle ore 22. Per la consegna a domicilio non ci sono restrizioni.
-            li Chiusura dei negozi, fatta eccezione per supermercati, beni alimentari e di necessità. Restano aperte edicole, tabaccherie, farmacie e parafarmacie, lavanderie, parrucchieri e barbieri. Chiusi i centri estetici.
-            li Didattica a distanza per la scuola secondaria di secondo grado, per le classi di seconda e terza media. Restano aperte, quindi, solo le scuole dell'infanzia, le scuole elementari e la prima media. Chiuse le università, salvo specifiche eccezioni.
-            li Sono sospese tutte le competizioni sportive salvo quelle riconosciute di interesse nazionale dal CONI e CIP. Sospese le attività nei centri sportivi. Rimane consentito svolgere attività motoria nei pressi della propria abitazione e attività sportiva solo all'aperto in forma individuale.
-            li Sono chiusi musei e mostre; chiusi anche teatri, cinema, palestre, attività di sale giochi, sale scommesse, bingo, anche nei bar e nelle tabaccherie.
-            li Per i mezzi di trasporto pubblico è consentito il riempimento solo fino al 50%, fatta eccezione per i mezzi di trasporto scolastico.
+        section: ul#ul-zona
+            if ((new Date()) >= (new Date("2021-01-16")))
+                li È vietato ogni spostamento, anche all'interno del proprio Comune, in qualsiasi orario, salvo che per motivi di lavoro, necessità, salute, per far rientro alla propria residenza, domicilio o abitazione, o per il ricongiungimento con il partner.
+                li Consentito ricevere in casa non più di due persone non conviventi; sono esclusi dal conteggio i minori di 14 anni e i disabili.
+                li Possibile visitare una sola abitazione privata una volta al giorno tra le 5 e le 22.
+                li Chiuse le attività commerciali non essenziali: bar, ristoranti, negozi di ogni genere.
+                li Aperti alimentari, farmacie, librerie, negozi di intimo e di sport, cartolerie, negozi di giocattoli, ferramenta, barbieri e parrucchieri.
+                li In presenza le scuole dell'infanzia, elementari e prime medie.
+                li Sono chiusi musei e mostre; chiusi anche teatri, cinema, palestre, attività di sale giochi, sale scommesse, bingo, anche nei bar e nelle tabaccherie.
+            else
+                li È vietato ogni spostamento, anche all'interno del proprio Comune, in qualsiasi orario, salvo che per motivi di lavoro, necessità e salute.
+                li Chiusura di bar e ristoranti, 7 giorni su 7. L'asporto è consentito fino alle ore 22. Per la consegna a domicilio non ci sono restrizioni.
+                li Chiusura dei negozi, fatta eccezione per supermercati, beni alimentari e di necessità. Restano aperte edicole, tabaccherie, farmacie e parafarmacie, lavanderie, parrucchieri e barbieri. Chiusi i centri estetici.
+                li Didattica a distanza per la scuola secondaria di secondo grado, per le classi di seconda e terza media. Restano aperte, quindi, solo le scuole dell'infanzia, le scuole elementari e la prima media. Chiuse le università, salvo specifiche eccezioni.
+                li Sono sospese tutte le competizioni sportive salvo quelle riconosciute di interesse nazionale dal CONI e CIP. Sospese le attività nei centri sportivi. Rimane consentito svolgere attività motoria nei pressi della propria abitazione e attività sportiva solo all'aperto in forma individuale.
+                li Sono chiusi musei e mostre; chiusi anche teatri, cinema, palestre, attività di sale giochi, sale scommesse, bingo, anche nei bar e nelle tabaccherie.
+                li Per i mezzi di trasporto pubblico è consentito il riempimento solo fino al 50%, fatta eccezione per i mezzi di trasporto scolastico.
