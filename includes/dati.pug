@@ -19,6 +19,9 @@
         {from: "2021-01-24", to: "2021-01-31", color: "gialla", regions: ["basilicata","campania","molise","trento","toscana"]},
         {from: "2021-01-24", to: "2021-01-31", color: "arancione", regions: ["sardegna", "lombardia", "abruzzo", "calabria", "emiliaromagna", "friuliveneziagiulia", "lazio", "liguria", "marche", "piemonte", "puglia", "umbria", "valdaosta", "veneto"]},
         {from: "2021-01-24", to: "2021-01-31", color: "rossa", regions: ["bolzano","sicilia"]},
+        // https://www.repubblica.it/cronaca/2021/01/29/news/monitoraggio_settimanale_l_rt_e_a_0_84-284790919/
+        {from: "2021-02-01", color: "arancione", regions: ["puglia", "sardegna", "sicilia", "umbria", "bolzano"]},
+        {from: "2021-02-01", color: "gialla", regions: ["abruzzo","basilicata","calabria","campania","emiliaromagna","friuliveneziagiulia","lazio","liguria","lombardia","marche","molise","piemonte","toscana","trento","valdaosta","veneto"]},
     ];
     const nomiFriendly = {
         abruzzo: "Abruzzo",
@@ -69,6 +72,8 @@
                 throw new Error("Healthcheck failed, invalid regions: " + this.regions.filter(region => !nomiFriendly[region]).join(","))
             if (this.regions.length == 0 && !this.any)
                 throw new Error("Healthcheck failed, no regions selected");
+            if (!(this.color in colori))
+                throw new Error("Healthcheck failed, invalid color");
         }
         dateIsContained(date) {
             if (date < this.from)
