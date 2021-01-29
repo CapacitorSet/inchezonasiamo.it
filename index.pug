@@ -7,7 +7,7 @@ body
     .tile.is-ancestor
         .section.tile.is-child.is-8(style="text-align: center")
             include includes/cartina.pug
-        .section.tile.is-child.is-4: each rule in data.reverse()
+        .section.tile.is-child.is-4: each rule in data.reverse().slice(0, 9)
             +rule_to_card(rule)
     include includes/footer.pug
     script(src="/script.js" async)
