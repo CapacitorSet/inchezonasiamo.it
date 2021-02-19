@@ -1,0 +1,21 @@
+include calendario.pug
+mixin zona_bianca(nomeRegione)
+    - const nomeFriendly = nomiFriendly[nomeRegione];
+    article
+        header.has-text-centered#title-zona-bianca
+            h1.title.is-1 #{nomeFriendly}: zona bianca
+            h2.subtitle Spostamenti liberi, rimane l'obbligo di mascherina e distanziamento.
+            .is-hidden-desktop
+                button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona bianca: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi
+                br
+            br
+
+            +calendario(nomeRegione)
+            aside: p.has-text-centered
+                | Ultimo aggiornamento: 
+                time(pubdate datetime=(new Date().toISOString()))=new Date().toLocaleString("it-IT", {timeZone: "Europe/London", day: '2-digit', month: 'long', hour: 'numeric', minute: 'numeric'})
+        br
+
+        section: ul#ul-zona
+            li Nessuna restrizione a spostamenti, vita quotidiana ed esercizi commerciali
+            li Obbligo di usare la mascherina e di rispettare il distanziamento

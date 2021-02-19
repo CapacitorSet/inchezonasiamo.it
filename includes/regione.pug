@@ -3,6 +3,7 @@ include dati.pug
     include zona_rossa.pug
     include zona_arancione.pug
     include zona_gialla.pug
+    include zona_bianca.pug
     include card.pug
     include calendario.pug
     mixin paginaRegione(nomeRegione)
@@ -19,6 +20,10 @@ include dati.pug
                     +hero_small_arancione()
                 when "gialla"
                     +hero_small_gialla()
+                when "bianca"
+                    +hero_small_bianca()
+                default
+                    - throw new Error("Unknown zone " + coloreZona)
             section.section.body
                 case coloreZona
                     when "rossa"
@@ -27,6 +32,10 @@ include dati.pug
                         +zona_arancione(nomeRegione)
                     when "gialla"
                         +zona_gialla(nomeRegione)
+                    when "bianca"
+                        +zona_bianca(nomeRegione)
+                    default
+                        - throw new Error("Unknown zone " + coloreZona)
                 br
                 each rule in allRulesForRegion(nomeRegione).reverse()
                     +rule_to_card(rule)

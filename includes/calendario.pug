@@ -39,6 +39,11 @@ mixin calendario(nomeRegione)
                                 td.gialla.maybe=dataAttuale.getUTCDate()
                             else
                                 td.gialla=dataAttuale.getUTCDate()
+                        when "bianca"
+                            if rule.maybe
+                                td.bianca.maybe=dataAttuale.getUTCDate()
+                            else
+                                td.bianca=dataAttuale.getUTCDate()
                         default
                             td=dataAttuale.getUTCDate()
                     - dataAttuale.setUTCDate(dataAttuale.getUTCDate() + 1)
@@ -63,6 +68,11 @@ mixin calendario(nomeRegione)
                                     td.gialla.maybe=dataAttuale.getUTCDate()
                                 else
                                     td.gialla=dataAttuale.getUTCDate()
+                            when "bianca"
+                                if rule.maybe
+                                    td.bianca.maybe=dataAttuale.getUTCDate()
+                                else
+                                    td.bianca=dataAttuale.getUTCDate()
                             default
                                 td=dataAttuale.getUTCDate()
                         - dataAttuale.setUTCDate(dataAttuale.getUTCDate() + 1)

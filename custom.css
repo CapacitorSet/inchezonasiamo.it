@@ -17,6 +17,9 @@
 .hero.gialla {
     background-color: #fbc02d;
 }
+.hero.bianca {
+    background-color: #ccc;
+}
 
 td.rossa {
     background-color: #e2001a;
@@ -30,6 +33,10 @@ td.gialla {
     background-color: #fbc02d;
     color: white;
 }
+td.bianca {
+    background-color: #fff;
+    color: #000;
+}
 td.rossa.maybe {
     background-color: #e2001aaa;
     color: white;
@@ -41,6 +48,10 @@ td.arancione.maybe {
 td.gialla.maybe {
     background-color: #fbc02daa;
     color: white;
+}
+td.bianca.maybe {
+    background-color: #eee;
+    color: #444;
 }
 
 .section.body {
