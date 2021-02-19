@@ -29,6 +29,14 @@
         {from: "2021-02-11", color: "gialla", regions: ["puglia"]},
         {from: "2021-02-14", color: "arancione", regions: ["toscana","trento","abruzzo","liguria"]},
         {from: "2021-02-15", color: "gialla", regions: ["sicilia"]},
+        // https://milano.repubblica.it/cronaca/2021/02/16/news/castrezzato_zona_rossa_mercoledi_17_febbraio_coronavirus_brescia-287886457/
+        {from: "2021-02-17", color: "gialla", regions: ["lombardia"], notes: "I comuni di Bollate, Castrezzato, Mede e Viggiù sono in zona rossa."},
+        // https://www.ilrestodelcarlino.it/cronaca/ordinanza-regione-marche-oggi-ancona-1.6032095
+        {from: "2021-02-17", color: "gialla", regions: ["marche"], notes: "Fino alla mezzanotte di sabato 20 è vietato entrare e uscire dalla provincia di Ancona."},
+        // https://www.repubblica.it/cronaca/2021/02/19/news/covid_monitoraggio_colori_regioni_campania_emilia_molise_arancione-288258108/
+        {from: "2021-02-21", color: "arancione", regions: ["molise","emiliaromagna","campania"], maybe: true},
+        {from: "2021-02-21", color: "rossa", regions: ["bolzano","umbria"], maybe: true},
+        {from: "2021-02-21", color: "bianca", regions: ["valdaosta"], maybe: true},
     ];
     const nomiFriendly = {
         abruzzo: "Abruzzo",
@@ -56,7 +64,8 @@
     const colori = {
         rossa: "#e2001a",
         arancione: "#ee7f01",
-        gialla: "#fbc02d"
+        gialla: "#fbc02d",
+        bianca: "#ffffff"
     };
     const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
     class Regola {
