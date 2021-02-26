@@ -1,43 +1,42 @@
-include dati.pug
-    include hero_small.pug
-    include zona_rossa.pug
-    include zona_arancione.pug
-    include zona_gialla.pug
-    include zona_bianca.pug
-    include card.pug
-    include calendario.pug
-    mixin paginaRegione(nomeRegione)
-        -
-            const nomeFriendly = nomiFriendly[nomeRegione];
-            const coloreZona = colorOf(nomeRegione);
-        doctype html
-        include head.pug
-        body
+include hero_small.pug
+include zona_rossa.pug
+include zona_arancione.pug
+include zona_gialla.pug
+include zona_bianca.pug
+include card.pug
+include calendario.pug
+mixin paginaRegione(nomeRegione)
+    -
+        const nomeFriendly = nomiFriendly[nomeRegione];
+        const coloreZona = colorOf(nomeRegione);
+    doctype html
+    include head.pug
+    body
+        case coloreZona
+            when "rossa"
+                +hero_small_rossa()
+            when "arancione"
+                +hero_small_arancione()
+            when "gialla"
+                +hero_small_gialla()
+            when "bianca"
+                +hero_small_bianca()
+            default
+                - throw new Error("Unknown zone " + coloreZona)
+        section.section.body
             case coloreZona
                 when "rossa"
-                    +hero_small_rossa()
+                    +zona_rossa(nomeRegione)
                 when "arancione"
-                    +hero_small_arancione()
+                    +zona_arancione(nomeRegione)
                 when "gialla"
-                    +hero_small_gialla()
+                    +zona_gialla(nomeRegione)
                 when "bianca"
-                    +hero_small_bianca()
+                    +zona_bianca(nomeRegione)
                 default
                     - throw new Error("Unknown zone " + coloreZona)
-            section.section.body
-                case coloreZona
-                    when "rossa"
-                        +zona_rossa(nomeRegione)
-                    when "arancione"
-                        +zona_arancione(nomeRegione)
-                    when "gialla"
-                        +zona_gialla(nomeRegione)
-                    when "bianca"
-                        +zona_bianca(nomeRegione)
-                    default
-                        - throw new Error("Unknown zone " + coloreZona)
-                br
-                each rule in allRulesForRegion(nomeRegione).reverse()
-                    +rule_to_card(rule)
-            include footer.pug
-            script(src="/script.js" async)
+            br
+            each rule in allRulesForRegion(nomeRegione).reverse()
+                +rule_to_card(rule)
+        include footer.pug
+        script(src="/script.js" async)

@@ -7,10 +7,8 @@ mixin rule_to_card(rule)
                 | #{rule.formatInterval()} #[b potrebbero] essere in zona #{rule.color} 
             else
                 | #{rule.formatInterval()} sono in zona #{rule.color} 
-            if (rule.any)
-                |  tutte le regioni.
-            else
-                | le regioni: #{rule.regions.map(it => nomiFriendly[it]).join(", ")}.
+            =rule.whatIsAffected()
+            | .
         if (rule.notes != "")
             br
             p: i Nota: #{rule.notes}
