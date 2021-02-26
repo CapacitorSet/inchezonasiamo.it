@@ -102,6 +102,9 @@ const _data: RuleData[] = [
     {from: "2021-02-25", to: "2021-03-07", color: "rossa", parentRegion: "abruzzo", comuni: ["Ateleta", "Pacentro", "Campo di Giove", "Cansano", "Rocca Casale", "Ortona dei Marsi"]},
     // https://www.repubblica.it/cronaca/2021/02/25/news/covid_sei_regioni_rischiano_di_entrare_in_zona_arancione_le_restrizioni_scateranno_da_lunedi_-289191106/
     {from: "2021-02-27", color: "arancione", regions: ["emiliaromagna"]},
+    // https://www.regione.emilia-romagna.it/notizie/primo-piano/dal-27-febbraio-zona-arancione-scuro-in-tutti-comuni-della-citta-metropolitana-di-bologna
+    {from: "2021-02-25", to: "2021-03-11", color: "arancione", provincie: ["imola"], parentRegion: "emiliaromagna"},
+    {from: "2021-02-25", to: "2021-03-14", color: "arancione", provincie: ["bologna"], parentRegion: "emiliaromagna"},
     // https://www.repubblica.it/cronaca/2021/02/26/news/tre_regioni_in_arancione_una_in_rosso-289328808/
     {from: "2021-03-01", color: "bianca", regions: ["sardegna"], maybe: true},
     {from: "2021-03-01", color: "gialla", regions: ["liguria"], maybe: true},
