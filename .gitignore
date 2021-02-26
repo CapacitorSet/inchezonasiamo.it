@@ -1,3 +1,4 @@
 *.html
 node_modules/
 *.min.css
+scripts/*.js
