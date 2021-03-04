@@ -1,7 +1,6 @@
 mixin rule_to_card(rule)
     .box
-        - const titolo = rule.formatInterval() + ": zona " + rule.color;
-        h1.title.is-4=titolo
+        h1.title.is-4=rule.makeTitle()
         p
             if rule.maybe
                 | #{rule.formatInterval()} #[b potrebbero] essere in zona #{rule.color} 

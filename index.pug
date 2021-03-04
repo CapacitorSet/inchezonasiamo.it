@@ -8,5 +8,6 @@ body
             include includes/cartina.pug
         .section.tile.is-child.is-4: each rule in data.reverse().slice(0, 9)
             +rule_to_card(rule)
+        - data.reverse(); // Undo in-place reverse
     include includes/footer.pug
     script(src="/script.js" async)

@@ -103,13 +103,23 @@ const _data: RuleData[] = [
     // https://www.repubblica.it/cronaca/2021/02/25/news/covid_sei_regioni_rischiano_di_entrare_in_zona_arancione_le_restrizioni_scateranno_da_lunedi_-289191106/
     {from: "2021-02-27", color: "arancione", regions: ["emiliaromagna"]},
     // https://www.regione.emilia-romagna.it/notizie/primo-piano/dal-27-febbraio-zona-arancione-scuro-in-tutti-comuni-della-citta-metropolitana-di-bologna
-    {from: "2021-02-25", to: "2021-03-11", color: "arancione", provincie: ["imola"], parentRegion: "emiliaromagna"},
-    {from: "2021-02-25", to: "2021-03-14", color: "arancione", provincie: ["bologna"], parentRegion: "emiliaromagna"},
+    {from: "2021-02-25", to: "2021-03-11", color: "arancione", provincie: ["Imola"], parentRegion: "emiliaromagna"},
+    {from: "2021-02-25", to: "2021-03-14", color: "arancione", provincie: ["Bologna"], parentRegion: "emiliaromagna"},
     // https://www.repubblica.it/cronaca/2021/02/26/news/tre_regioni_in_arancione_una_in_rosso-289328808/
-    {from: "2021-03-01", color: "bianca", regions: ["sardegna"], maybe: true},
-    {from: "2021-03-01", color: "gialla", regions: ["liguria"], maybe: true},
-    {from: "2021-03-01", color: "arancione", regions: ["lombardia","piemonte","marche"], maybe: true},
-    {from: "2021-03-01", color: "rossa", regions: ["basilicata", "molise"], maybe: true},
+    {from: "2021-03-01", color: "bianca", regions: ["sardegna"]},
+    {from: "2021-03-01", color: "gialla", regions: ["liguria"]},
+    {from: "2021-03-01", color: "arancione", regions: ["lombardia","piemonte","marche"]},
+    {from: "2021-03-01", color: "rossa", regions: ["basilicata", "molise"]},
+    // https://milano.repubblica.it/cronaca/2021/03/01/news/brescia_arancione_scuro_altri_8_giorni-289795444/
+    {from: "2021-02-23", to: "2021-03-09", color: "arancione", provincie: ["Brescia"], parentRegion: "lombardia"},
+    {from: "2021-02-23", to: "2021-03-09", color: "arancione", comuni: ["Sarnico, Gandosso, Viadanica, Predore, Adrara San Martino, Villongo, Castelli di Calepio, Credaro, Soncino"], parentRegion: "lombardia"},
+    {from: "2021-03-03", to: "2021-03-10", color: "arancione", provincie: ["Como"], parentRegion: "lombardia"},
+    {from: "2021-03-03", to: "2021-03-10", color: "arancione", comuni: ["Viadana, Pomponesco, Gazzuolo, Commessaggio, Dosolo, Suzzara, Gonzaga, Pegognaga, Moglia, Quistello, San Giacomo delle Segnate, San Benedetto Po, Asola, Castelgoffredo, Casaloldo, Medole, Casalmoro, Castiglione delle Stiviere (Mantova), Cremona, Spinadesco, Castelverde, Pozzaglio ed Uniti, Corte dei Frati, Corte de’ Cortesi con Cignone, Spineda, Bordolano e Olmeneta (Cremona), Casorate Primo, Trovo, Trivolzio, Rognano, Giussago, Zeccone, Siziano, Battuda, Bereguardo, Borgarello, Zerbolò, Vidigulfo (Pavia), Motta Visconti, Besate, Binasco, Truccazzano, Melzo, Liscate, Pozzuolo Martesana, Vignate, Rodano, Casarile (Milano)"], parentRegion: "lombardia"},
+    // https://www.corriere.it/salute/21_marzo_02/bologna-zona-rossa-romagna-gia-oggi-zona-arancione-scuro-21bcf2f0-7b3a-11eb-a9cc-1eebe11a6a7c.shtml
+    {from: "2021-03-02", color: "rossa", provincie: ["Bologna"], parentRegion: "emiliaromagna"},
+    {from: "2021-03-02", color: "arancione", provincie: ["Ravenna, Cesena, Rimini (eccetto Forlì)"], parentRegion: "emiliaromagna"},
+    // https://milano.repubblica.it/cronaca/2021/03/04/news/lombardia_zona_arancione_rinforzato_ordinanza_governatore_attilio_fontana-290257351/
+    {from: "2021-03-05", to: "2021-03-14", color: "arancione", regions: ["lombardia"]},
 ];
 
 const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
@@ -117,7 +127,7 @@ function formatDate(date: Date): string {
     return date.getDate() + " " + months[date.getMonth()];
 }
 
-class BasicRule {
+export class BasicRule {
     color: Color;
     notes: string | null;
     from: Date;
@@ -151,8 +161,18 @@ class BasicRule {
             ret += " al " + formatDate(this.originalTo);
         return ret;
     }
-    get hasEnd(): boolean {
-        return "to" in this;
+    makeTitle() {
+        return this.formatInterval() + ": zona " + this.color;
+    }
+    makeDescription() {
+        return this.formatInterval()
+            + (this.maybe ? " potrebbero essere " : " sono ")
+            + `in zona ${this.color} `
+            + (this as unknown as IRule).whatIsAffected()
+            + "."
+            + (this.notes
+                ? (" Nota: " + this.notes)
+                : "");
     }
 }
 
@@ -229,7 +249,9 @@ class ProvincieRule extends BasicRule implements IRule {
     }
 }
 
-const data: IRule[] = _data.map(ruleData => {
+export type Rule = AnyRule | RegionsRule | ComuniRule | ProvincieRule;
+
+const data: Rule[] = _data.map(ruleData => {
     if ("any" in ruleData) {
         return new AnyRule(ruleData as AnyRuleData)
     } else if ("regions" in ruleData) {
@@ -244,12 +266,12 @@ const data: IRule[] = _data.map(ruleData => {
 });
 
 // All rules that affect a region either completely or in part
-function allRulesForRegion(region: Region): IRule[] {
+function allRulesForRegion(region: Region): Rule[] {
     return data.filter(item => item.regionIsPartlyAffected(region));
 }
 
 // The rule that defines the color of the entire region
-function ruleFor(region: Region, date = new Date()): IRule {
+function ruleFor(region: Region, date = new Date()): Rule {
     if (!(region in nomiFriendly))
         throw new Error("Unknown region " + region);
     let rule;
