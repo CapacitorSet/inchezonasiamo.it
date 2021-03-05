@@ -6,6 +6,7 @@ type BasicRuleData = {
     to?: string;
     maybe?: boolean;
     notes?: string;
+    rafforzata?: boolean;
 }
 type AnyRuleData = BasicRuleData & {
     any: true;
@@ -120,6 +121,11 @@ const _data: RuleData[] = [
     {from: "2021-03-02", color: "arancione", provincie: ["Ravenna, Cesena, Rimini (eccetto Forlì)"], parentRegion: "emiliaromagna"},
     // https://milano.repubblica.it/cronaca/2021/03/04/news/lombardia_zona_arancione_rinforzato_ordinanza_governatore_attilio_fontana-290257351/
     {from: "2021-03-05", to: "2021-03-14", color: "arancione", regions: ["lombardia"]},
+    // https://www.repubblica.it/cronaca/2021/03/05/news/monitoraggio_colori_regioni_zona_rossa_zona_arancione_iss-290417979/
+    {from: "2021-03-06", color: "rossa", provincie: ["Ancona", "Macerata"], parentRegion: "marche"},
+    {from: "2021-03-08", color: "arancione", regions: ["friuliveneziagiulia", "veneto"]},
+    {from: "2021-03-08", color: "arancione", regions: ["lombardia"], rafforzata: true},
+    {from: "2021-03-08", color: "rossa", regions: ["campania"]},
 ];
 
 const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
@@ -134,6 +140,7 @@ export class BasicRule {
     to?: Date;
     originalTo?: Date;
     maybe: boolean;
+    rafforzata: boolean;
 
     constructor(src: BasicRuleData) {
         this.color = src.color;
@@ -147,6 +154,7 @@ export class BasicRule {
         }
         this.notes = src.notes || "";
         this.maybe = src.maybe || false;
+        this.rafforzata = src.rafforzata || false;
     }
     dateIsContained(date: Date): boolean {
         if (date < this.from)
@@ -162,12 +170,13 @@ export class BasicRule {
         return ret;
     }
     makeTitle() {
-        return this.formatInterval() + ": zona " + this.color;
+        return this.formatInterval() + ": zona " + this.color + (this.rafforzata ? " rafforzata" : "");
     }
     makeDescription() {
         return this.formatInterval()
             + (this.maybe ? " potrebbero essere " : " sono ")
             + `in zona ${this.color} `
+            + (this.rafforzata ? "rafforzata " : "")
             + (this as unknown as IRule).whatIsAffected()
             + "."
             + (this.notes

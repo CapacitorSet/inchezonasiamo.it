@@ -6,6 +6,8 @@ mixin rule_to_card(rule)
                 | #{rule.formatInterval()} #[b potrebbero] essere in zona #{rule.color} 
             else
                 | #{rule.formatInterval()} sono in zona #{rule.color} 
+            if rule.rafforzata
+                | rafforzata 
             =rule.whatIsAffected()
             | .
         if (rule.notes != "")

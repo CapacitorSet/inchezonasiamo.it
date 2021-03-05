@@ -1,9 +1,12 @@
 include calendario.pug
-mixin zona_rossa(nomeRegione)
+mixin zona_rossa(nomeRegione, regolaZona)
     - const nomeFriendly = nomiFriendly[nomeRegione];
     article
         header.has-text-centered#title-zona-rossa
-            h1.title.is-1 #{nomeFriendly}: zona rossa
+            h1.title.is-1
+                | #{nomeFriendly}: zona rossa
+                if regolaZona.rafforzata
+                    |  rafforzata
             h2.subtitle Vietato ogni spostamento, chiusi bar e ristoranti.
             .is-hidden-desktop
                 button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona rossa: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi

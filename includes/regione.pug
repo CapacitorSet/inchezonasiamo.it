@@ -8,6 +8,7 @@ include calendario.pug
 mixin paginaRegione(nomeRegione)
     -
         const nomeFriendly = nomiFriendly[nomeRegione];
+        const regolaZona = ruleFor(nomeRegione);
         const coloreZona = colorOf(nomeRegione);
     doctype html
     include head.pug
@@ -26,13 +27,13 @@ mixin paginaRegione(nomeRegione)
         section.section.body
             case coloreZona
                 when "rossa"
-                    +zona_rossa(nomeRegione)
+                    +zona_rossa(nomeRegione, regolaZona)
                 when "arancione"
-                    +zona_arancione(nomeRegione)
+                    +zona_arancione(nomeRegione, regolaZona)
                 when "gialla"
-                    +zona_gialla(nomeRegione)
+                    +zona_gialla(nomeRegione, regolaZona)
                 when "bianca"
-                    +zona_bianca(nomeRegione)
+                    +zona_bianca(nomeRegione, regolaZona)
                 default
                     - throw new Error("Unknown zone " + coloreZona)
             br

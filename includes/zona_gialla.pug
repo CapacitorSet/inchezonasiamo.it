@@ -1,9 +1,12 @@
 include calendario.pug
-mixin zona_gialla(nomeRegione)
+mixin zona_gialla(nomeRegione, regolaZona)
     - const nomeFriendly = nomiFriendly[nomeRegione];
     article
         header.has-text-centered#title-zona-gialla
-            h1.title.is-1 #{nomeFriendly}: zona gialla
+            h1.title.is-1
+                | #{nomeFriendly}: zona gialla
+                if regolaZona.rafforzata
+                    |  rafforzata
             h2.subtitle Coprifuoco, chiusura di bar e ristoranti alle 18.
             .is-hidden-desktop
                 button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona gialla: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi
