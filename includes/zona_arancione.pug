@@ -1,4 +1,5 @@
 include calendario.pug
+include restrizione.pug
 mixin zona_arancione(nomeRegione, regolaZona)
     - const nomeFriendly = nomiFriendly[nomeRegione];
     article
@@ -20,26 +21,23 @@ mixin zona_arancione(nomeRegione, regolaZona)
         br
 
         section: ul#ul-zona
-            li Raccomandazione di non spostarsi se non per motivi di salute, lavoro, studio, situazioni di necessità.
-            if ((new Date()) >= (new Date("2021-01-16")))
-                li Spostamenti liberi all'interno del comune.
-                li Vietato uscire dal comune; per chi vive in un comune fino a 5.000 abitanti è possibile spostarsi di 30 km senza raggiungere il capoluogo.
-                li Possibile raggiungere le seconde case se all'interno della regione.
-                li Consentito ricevere in casa non più di due persone non conviventi; sono esclusi dal conteggio i minori di 14 anni e i disabili.
-                li Possibile visitare una sola abitazione privata una volta al giorno tra le 5 e le 22.
-                li Aperti i negozi, tranne i centri commerciali nel weekend.
-                li Chiusi bar, ristoranti, pasticcerie e gelaterie.
-                li Chiusi musei, cinema, teatri, mostre, fiere e congressi.
-                li Chiuse palestre, piscine e impianti da sci.
-                // Todo: aggiornare con la didattica
-            else
-                li Vietato circolare dalle ore 22 alle ore 5 del mattino, salvo comprovati motivi di lavoro, necessità e salute.
-                li Per chi vive in un Comune fino a 5.000 abitanti è possibile spostarsi tra le 5 e le 22, entro 30 km dal confine del proprio Comune (quindi eventualmente anche in un'altra Regione), con il divieto però di spostarsi verso i capoluoghi di Provincia.
-                li Vietati gli spostamenti in entrata e in uscita da una Regione all'altra e da un Comune all'altro, salvo comprovati motivi di lavoro, studio, salute, necessità. Raccomandazione di evitare spostamenti non necessari nel corso della giornata all'interno del proprio Comune.
-                li Chiusura di bar e ristoranti, 7 giorni su 7. L'asporto è consentito fino alle ore 22. Per la consegna a domicilio non ci sono restrizioni.
-                li Chiusura dei centri commerciali nei giorni festivi e prefestivi ad eccezione delle farmacie, parafarmacie, punti vendita di generi alimentari, tabaccherie ed edicole al loro interno.
-                li Chiusura di musei e mostre.
-                li Didattica a distanza per le scuole superiori, fatta eccezione per gli studenti con disabilità e in caso di uso di laboratori; didattica in presenza per scuole dell'infanzia, scuole elementari e scuole medie. Chiuse le università, salvo alcune attività per le matricole e per i laboratori.
-                li Riduzione fino al 50% per il trasporto pubblico, ad eccezione dei mezzi di trasporto scolastico.
-                li Sospensione di attività di sale giochi, sale scommesse, bingo e slot machine anche nei bar e tabaccherie.
-                li Restano chiuse piscine, palestre, teatri, cinema. Restano aperti i centri sportivi.
+            +restrizione("car-fill", "Spostamenti")
+                p È consentito spostarsi all'interno del proprio Comune #[strong dalle 5:00 alle 22:00]. È sempre consentito spostarsi per motivi di lavoro, necessità o salute, o per fare rientro alla propria residenza, domicilio o abitazione.
+                p È consentito lo spostamento verso una sola abitazione nel proprio comune, una volta al giorno, tra le 5:00 e le 22:00, per un massimo di due visitatori. Non rientrano nel conteggio i figli minori di 14 anni e i disabili. In questo caso il rientro all'abitazione dovrà avvenire tra le 5:00 e le 22:00.
+            +restrizione("map-2-fill", "Piccoli comuni")
+                p Per chi abita in un paese di meno di 5.000 abitanti, la regola dello spostamento verso una sola abitazione si applica invece per una distanza di 30 km. Non è possibile però raggiungere i capoluoghi di provincia.
+            +restrizione("run-fill", "Attività motoria e sportiva")
+                p L'attività motoria e sportiva è permessa dalle 5 alle 22.
+                p Qualora un'attività sportiva non sia disponibile nel proprio comune è possibile svolgerla in un altro comune nella stessa regione, dalle 5:00 alle 22:00.Se l'attività sportiva comporta uno spostamento (es. corsa o bicicletta) è possibile transitare per un altro comune, ma l'attività deve concludersi nel comune di partenza.
+                p Sono chiuse palestre e piscine.
+            +restrizione("run-fill", "Attività commerciali")
+                p Dalle 5 alle 22 sono aperti solo da asporto #[strong ristoranti, pasticcerie, gelaterie] e simili; dalle 5 alle 18 solo da asporto i #[strong bar]. È sempre consentita la consegna a domicilio. Non è possibile consumare cibi e bevande all'interno dei locali o nelle loro prossimità.
+                p I negozi sono aperti.
+            // +restrizione("pencil-fill", "Scuole e università")
+                p Le scuole dell'infanzia sono sospese.
+                p Per tutte le scuole e le università la didattica è a distanza; i singoli atenei possono prevedere eccezioni.
+            +restrizione("palette-fill", "Cultura")
+                p Sono chiusi musei, mostre, teatri e cinema. Le biblioteche sono aperte solo su prenotazione.
+            +restrizione("group-fill", "Attività politica")
+                p Le manifestazioni in forma statica sono permesse, ed è possibile uscire dal proprio comune per parteciparvi.
+                p Sono permesse le attività e riunioni sindacali.
