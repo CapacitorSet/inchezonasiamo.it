@@ -1,4 +1,5 @@
 include calendario.pug
+include restrizione.pug
 mixin zona_rossa(nomeRegione, regolaZona)
     - const nomeFriendly = nomiFriendly[nomeRegione];
     article
@@ -20,19 +21,24 @@ mixin zona_rossa(nomeRegione, regolaZona)
         br
 
         section: ul#ul-zona
-            if ((new Date()) >= (new Date("2021-01-16")))
-                li È vietato ogni spostamento, anche all'interno del proprio Comune, in qualsiasi orario, salvo che per motivi di lavoro, necessità, salute, per far rientro alla propria residenza, domicilio o abitazione, o per il ricongiungimento con il partner.
-                li Consentito ricevere in casa non più di due persone non conviventi; sono esclusi dal conteggio i minori di 14 anni e i disabili.
-                li Possibile visitare una sola abitazione privata una volta al giorno tra le 5 e le 22.
-                li Chiuse le attività commerciali non essenziali: bar, ristoranti, negozi di ogni genere.
-                li Aperti alimentari, farmacie, librerie, negozi di intimo e di sport, cartolerie, negozi di giocattoli, ferramenta, barbieri e parrucchieri.
-                li In presenza le scuole dell'infanzia, elementari e prime medie.
-                li Sono chiusi musei e mostre; chiusi anche teatri, cinema, palestre, attività di sale giochi, sale scommesse, bingo, anche nei bar e nelle tabaccherie.
-            else
-                li È vietato ogni spostamento, anche all'interno del proprio Comune, in qualsiasi orario, salvo che per motivi di lavoro, necessità e salute.
-                li Chiusura di bar e ristoranti, 7 giorni su 7. L'asporto è consentito fino alle ore 22. Per la consegna a domicilio non ci sono restrizioni.
-                li Chiusura dei negozi, fatta eccezione per supermercati, beni alimentari e di necessità. Restano aperte edicole, tabaccherie, farmacie e parafarmacie, lavanderie, parrucchieri e barbieri. Chiusi i centri estetici.
-                li Didattica a distanza per la scuola secondaria di secondo grado, per le classi di seconda e terza media. Restano aperte, quindi, solo le scuole dell'infanzia, le scuole elementari e la prima media. Chiuse le università, salvo specifiche eccezioni.
-                li Sono sospese tutte le competizioni sportive salvo quelle riconosciute di interesse nazionale dal CONI e CIP. Sospese le attività nei centri sportivi. Rimane consentito svolgere attività motoria nei pressi della propria abitazione e attività sportiva solo all'aperto in forma individuale.
-                li Sono chiusi musei e mostre; chiusi anche teatri, cinema, palestre, attività di sale giochi, sale scommesse, bingo, anche nei bar e nelle tabaccherie.
-                li Per i mezzi di trasporto pubblico è consentito il riempimento solo fino al 50%, fatta eccezione per i mezzi di trasporto scolastico.
+            +restrizione("car-fill", "Spostamenti")
+                p È vietato ogni spostamento, anche all'interno del proprio Comune, in qualsiasi orario, salvo che per motivi di #[strong lavoro, necessità o salute], o per fare rientro alla propria #[strong residenza, domicilio o abitazione].
+                p È consentito lo spostamento verso una sola abitazione nel proprio comune, una volta al giorno, tra le 5:00 e le 22:00, per un massimo di due visitatori. Non rientrano nel conteggio i figli minori di 14 anni e i disabili.
+                p Chi è in quarantena o in isolamento non può mai spostarsi se non per fare visite mediche.
+            +restrizione("map-2-fill", "Piccoli comuni")
+                p Per chi abita in un paese di meno di 5.000 abitanti, la regola dello spostamento verso una sola abitazione si applica invece per una distanza di 30 km. Non è possibile però raggiungere i capoluoghi di provincia.
+            +restrizione("run-fill", "Attività motoria e sportiva")
+                p L'#[strong attività motoria] è permessa solo individualmente e in prossimità dela propria abitazione.
+                p L'#[strong attività sportiva] è permessa solo individualmente nel territorio del proprio comune. Se l'attività sportiva comporta uno spostamento (es. corsa o bicicletta) è possibile transitare per un altro comune, ma l'attività deve concludersi nel comune di partenza.
+                p Sono chiuse palestre e piscine.
+            +restrizione("run-fill", "Attività commerciali")
+                p Dalle 5 alle 22 sono aperti solo da asporto #[strong ristoranti, pasticcerie, gelaterie] e simili; dalle 5 alle 18 solo da asporto i #[strong bar]. È sempre consentita la consegna a domicilio. Non è possibile consumare cibi e bevande all'interno dei locali o nelle loro prossimità.
+                p I #[strong negozi] di generi alimentari o beni di prima necessità sono aperti; sono chiusi gli altri, ad eccezione delle consegne a domicilio. Sono aperte edicole, tabaccai e farmacie.
+            +restrizione("pencil-fill", "Scuole e università")
+                p Le scuole dell'infanzia sono sospese.
+                p Per tutte le scuole e le università la didattica è a distanza; i singoli atenei possono prevedere eccezioni.
+            +restrizione("palette-fill", "Cultura")
+                p Sono chiusi musei, mostre, teatri e cinema. Le biblioteche sono aperte solo su prenotazione.
+            +restrizione("group-fill", "Attività politica")
+                p Le manifestazioni in forma statica sono permesse, ed è possibile uscire dal proprio comune per parteciparvi.
+                p Sono permesse le attività e riunioni sindacali.

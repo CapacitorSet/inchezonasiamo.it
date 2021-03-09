@@ -34,6 +34,11 @@ function compileFile(filename: string) {
     fs.writeFileSync(filename + ".html", output);
 }
 
+if (process.argv.length != 2) {
+    process.argv.slice(2).map(region => compileRegion(region));
+    process.exit(0);
+}
+
 for (const regionName in nomiFriendly) {
     compileRegion(regionName);
 }
