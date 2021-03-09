@@ -1,4 +1,5 @@
 include calendario.pug
+include restrizione.pug
 mixin zona_gialla(nomeRegione, regolaZona)
     - const nomeFriendly = nomiFriendly[nomeRegione];
     article
@@ -20,26 +21,20 @@ mixin zona_gialla(nomeRegione, regolaZona)
         br
 
         section: ul#ul-zona
-            li Raccomandazione di non spostarsi se non per motivi di salute, lavoro, studio, situazioni di necessità.
-            if ((new Date()) >= (new Date("2021-01-16")))
-                li Spostamenti liberi all'interno della regione.
-                li Possibile raggiungere le seconde case se all'interno della regione.
-                li Aperti tutti i negozi, tranne i grandi magazzini e i centri commerciali nel weekend.
-                // Todo: aggiornare? Potrebbe essere valido solo per le bevande
-                li Per bar, ristoranti, pasticcerie e gelaterie, dopo le 18 consentito solo il servizio a domicilio.
-                li Consentito ricevere in casa non più di due persone non conviventi; sono esclusi dal conteggio i minori di 14 anni e i disabili.
-                li Possibile visitare una sola abitazione privata una volta al giorno tra le 5 e le 22.
-                // Todo: aggiornare
-                // li Didattica a distanza per le scuole superiori, fatta eccezione per gli studenti con disabilità e in caso di uso di laboratori; didattica in presenza per scuole dell'infanzia, scuole elementari e scuole medie. Chiuse le università, salvo alcune attività per le matricole e per i laboratori.
-                li Aperti i musei.
-                li Chiusi i cinema, teatri, mostre, fiere e congressi.
-            else
-                li Vietato spostarsi tra regioni.
-                li Vietato circolare dalle ore 22 alle ore 5 del mattino, salvo comprovati motivi di lavoro, necessità e salute.
-                li Chiusura dei centri commerciali nei giorni festivi e prefestivi ad eccezione delle farmacie, parafarmacie, punti vendita di generi alimentari, tabaccherie ed edicole al loro interno.
-                li Chiusura di musei e mostre.
-                li Didattica a distanza per le scuole superiori, fatta eccezione per gli studenti con disabilità e in caso di uso di laboratori; didattica in presenza per scuole dell'infanzia, scuole elementari e scuole medie. Chiuse le università, salvo alcune attività per le matricole e per i laboratori.
-                li Riduzione fino al 50% per il trasporto pubblico, ad eccezione dei mezzi di trasporto scolastico.
-                li Sospensione di attività di sale giochi, sale scommesse, bingo e slot machine anche nei bar e tabaccherie.
-                li Chiusura di bar e ristoranti alle ore 18. L'asporto è consentito fino alle ore 22. Per la consegna a domicilio non ci sono restrizioni.
-                li Restano chiuse piscine, palestre, teatri, cinema. Restano aperti i centri sportivi.
+            +restrizione("car-fill", "Spostamenti")
+                p È consentito spostarsi all'interno della propria regione #[strong dalle 5:00 alle 22:00]. È sempre consentito spostarsi per motivi di lavoro, necessità o salute, o per fare rientro alla propria residenza, domicilio o abitazione.
+                p È consentito lo spostamento verso una sola abitazione nella propria regione, una volta al giorno, tra le 5:00 e le 22:00, per un massimo di due visitatori. Non rientrano nel conteggio i figli minori di 14 anni e i disabili. In questo caso il rientro all'abitazione dovrà avvenire tra le 5:00 e le 22:00.
+            +restrizione("run-fill", "Attività motoria e sportiva")
+                p L'attività motoria e sportiva è permessa dalle 5 alle 22 all'interno della propria regione.
+                p Sono chiuse palestre e piscine.
+            +restrizione("run-fill", "Attività commerciali")
+                p Dalle 5 alle 18 è possibile consumare cibi e bevando all'interno di bar, ristoranti e simili. Dalle 18 alle 22 è possibile solo l'asporto, ad eccezione dei bar. È sempre possibile la consegna a domicilio
+                p I negozi sono aperti.
+            +restrizione("pencil-fill", "Scuole e università")
+                // p Le scuole dell'infanzia sono sospese.
+                p Le università sono in didattica a distanza; i singoli atenei possono prevedere eccezioni.
+            +restrizione("palette-fill", "Cultura")
+                p Musei, mostre, teatri e cinema sono aperti al pubblico dal lunedì al venerdì.
+            +restrizione("group-fill", "Attività politica")
+                p Le manifestazioni in forma statica sono permesse, ed è possibile uscire dal proprio comune per parteciparvi.
+                p Sono permesse le attività e riunioni sindacali.
