@@ -126,6 +126,13 @@ const _data: RuleData[] = [
     {from: "2021-03-08", color: "arancione", regions: ["friuliveneziagiulia", "veneto"]},
     {from: "2021-03-08", color: "arancione", regions: ["lombardia"], rafforzata: true},
     {from: "2021-03-08", color: "rossa", regions: ["campania"]},
+    // https://www.repubblica.it/politica/2021/03/10/news/covid_e_nuovo_dpcm_riunita_la_cabina_di_regia_con_draghi-291651612/
+    {from: "2021-03-11", to: "2021-03-28", color: "gialla", rafforzata: true, comuni: ["Bari"], parentRegion: "puglia", notes: "Divieto di asporto e chiusura dei distributori automatici di cibi e bevande dalle ore 18 e sospensione delle attività di vendita al dettaglio dalle 19."},
+    {from: "2021-03-11", to: "2021-03-21", color: "rossa", rafforzata: true, regions: ["campania"], notes: "Chiusi al pubblico parchi urbani, ville comunali, giardini pubblici, lungomari e piazze."},
+    // https://www.repubblica.it/cronaca/2021/03/12/news/l_istituto_superiore_di_sanita_l_epidemia_accelera_-291933309/
+    {from: "2021-03-15", color: "rossa", regions: ["lombardia", "emiliaromagna", "piemonte", "veneto", "trento", "friuliveneziagiulia", "lazio", "marche", "puglia", "campania", "molise"]},
+    {from: "2021-03-15", color: "arancione", regions: ["valdaosta", "bolzano", "liguria", "toscana", "umbria", "abruzzo", "molise", "calabria", "basilicata", "sicilia"]},
+    {from: "2021-03-15", color: "bianca", regions: ["sardegna"]},
 ];
 
 const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
