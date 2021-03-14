@@ -129,10 +129,15 @@ const _data: RuleData[] = [
     // https://www.repubblica.it/politica/2021/03/10/news/covid_e_nuovo_dpcm_riunita_la_cabina_di_regia_con_draghi-291651612/
     {from: "2021-03-11", to: "2021-03-28", color: "gialla", rafforzata: true, comuni: ["Bari"], parentRegion: "puglia", notes: "Divieto di asporto e chiusura dei distributori automatici di cibi e bevande dalle ore 18 e sospensione delle attività di vendita al dettaglio dalle 19."},
     {from: "2021-03-11", to: "2021-03-21", color: "rossa", rafforzata: true, regions: ["campania"], notes: "Chiusi al pubblico parchi urbani, ville comunali, giardini pubblici, lungomari e piazze."},
+    // https://www.arezzonotizie.it/cronaca/provincia-arezzo-zona-rossa-giani-toscana-proposta.html
+    {from: "2021-03-15", color: "rossa", provincie: ["Arezzo", "Prato", "Pistoia"], parentRegion: "toscana"},
+    {from: "2021-03-15", color: "rossa", provincie: ["Santa Luce, Castellina Marittima, Montopoli, San Miniato, Castelfranco di Sotto, Santa Croce sull'Arno (Pisa)"], parentRegion: "toscana"},
     // https://www.repubblica.it/cronaca/2021/03/12/news/l_istituto_superiore_di_sanita_l_epidemia_accelera_-291933309/
     {from: "2021-03-15", color: "rossa", regions: ["lombardia", "emiliaromagna", "piemonte", "veneto", "trento", "friuliveneziagiulia", "lazio", "marche", "puglia", "campania", "molise"]},
     {from: "2021-03-15", color: "arancione", regions: ["valdaosta", "bolzano", "liguria", "toscana", "umbria", "abruzzo", "molise", "calabria", "basilicata", "sicilia"]},
     {from: "2021-03-15", color: "bianca", regions: ["sardegna"]},
+    // https://www.altalex.com/documents/news/2021/03/13/decreto-pasqua
+    {from: "2021-04-03", to: "2021-04-05", color: "rossa", any: true, notes: "Consentito lo spostamento verso una sola abitazione nel proprio comune, una volta al giorno, tra le 5:00 e le 22:00, per un massimo di due visitatori."},
 ];
 
 const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
