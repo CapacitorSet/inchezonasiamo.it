@@ -134,10 +134,18 @@ const _data: RuleData[] = [
     {from: "2021-03-15", color: "rossa", provincie: ["Santa Luce, Castellina Marittima, Montopoli, San Miniato, Castelfranco di Sotto, Santa Croce sull'Arno (Pisa)"], parentRegion: "toscana"},
     // https://www.repubblica.it/cronaca/2021/03/12/news/l_istituto_superiore_di_sanita_l_epidemia_accelera_-291933309/
     {from: "2021-03-15", color: "rossa", regions: ["lombardia", "emiliaromagna", "piemonte", "veneto", "trento", "friuliveneziagiulia", "lazio", "marche", "puglia", "campania", "molise"]},
-    {from: "2021-03-15", color: "arancione", regions: ["valdaosta", "bolzano", "liguria", "toscana", "umbria", "abruzzo", "molise", "calabria", "basilicata", "sicilia"]},
+    {from: "2021-03-15", color: "arancione", regions: ["valdaosta", "bolzano", "liguria", "toscana", "umbria", "abruzzo", "calabria", "basilicata", "sicilia"]},
     {from: "2021-03-15", color: "bianca", regions: ["sardegna"]},
     // https://www.altalex.com/documents/news/2021/03/13/decreto-pasqua
     {from: "2021-04-03", to: "2021-04-05", color: "rossa", any: true, notes: "Consentito lo spostamento verso una sola abitazione nel proprio comune, una volta al giorno, tra le 5:00 e le 22:00, per un massimo di due visitatori."},
+    // https://www.repubblica.it/cronaca/2021/03/19/news/otto_regioni_e_una_provincia_in_rosso_fino_a_pasqua-292873770/
+    {from: "2021-03-22", to: "2021-04-20", color: "rossa", regions: ["friuliveneziagiulia", "emiliaromagna", "piemonte", "marche", "lombardia", "campania", "trento", "puglia", "veneto"]},
+    {from: "2021-03-22", to: "2021-04-20", color: "arancione", regions: ["molise", "sardegna"]},
+    // https://www.repubblica.it/cronaca/2021/03/26/news/colori_lazio_e_val_d_aosta_cambiano_zona_rosso_certo_fino_al_13_aprile_per_otto_regioni_e_una_provincia-293849549/
+    {from: "2021-03-30", to: "2021-04-20", color: "arancione", regions: ["lazio"]},
+    {from: "2021-03-30", to: "2021-04-20", color: "rossa", regions: ["valdaosta", "calabria", "toscana"]},
+    // https://www.repubblica.it/cronaca/2021/04/02/news/monitoraggio_l_rt_scende_sotto_1_nessuna_regione_cambia_colore_ma_in_9_restano_in_rosso_fino_al_20_aprile-294760599/
+    {from: "2021-04-05", to: "2021-04-20", color: "arancione", regions: ["veneto", "marche", "trento"]},
 ];
 
 const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
