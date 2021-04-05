@@ -6,8 +6,10 @@ body
     .tile.is-ancestor
         .section.tile.is-child.is-8(style="text-align: center")
             include includes/cartina.pug
-        .section.tile.is-child.is-4: each rule in data.reverse().slice(0, 9)
-            +rule_to_card(rule)
+        .section.tile.is-child.is-4
+            h3.title.is-size-3 Gli ultimi aggiornamenti
+            each rule in data.reverse().slice(0, 9)
+                +rule_to_card(rule)
         - data.reverse(); // Undo in-place reverse
     include includes/footer.pug
     script(src="/script.js" async)
