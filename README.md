@@ -5,6 +5,8 @@ Un sito statico per tenere traccia delle restrizioni legate al Coronavirus.
 ## Compilazione
 
 ```bash
-npm install pug-cli --production
-node node_modules/.bin/pug *.pug
+npm install --production
+scripts/build.sh
 ```
+
+In mancanza di bash: compilare scripts/dati.ts in scripts/dati.js, idem per scripts/compile.ts, ed eseguire scripts/compile.js.
