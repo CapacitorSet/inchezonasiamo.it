@@ -146,6 +146,9 @@ const _data: RuleData[] = [
     {from: "2021-04-03", to: "2021-04-05", color: "rossa", any: true, notes: "Consentito lo spostamento verso una sola abitazione nel proprio comune, una volta al giorno, tra le 5:00 e le 22:00, per un massimo di due visitatori."},
     // https://www.repubblica.it/cronaca/2021/04/02/news/monitoraggio_l_rt_scende_sotto_1_nessuna_regione_cambia_colore_ma_in_9_restano_in_rosso_fino_al_20_aprile-294760599/
     {from: "2021-04-05", color: "arancione", regions: ["veneto", "marche", "trento"]},
+    // https://gdsit.cdn-immedia.net/2021/04/ordinanza_provincia_pa_zona_rossa.pdf
+    // https://gdsit.cdn-immedia.net/2021/04/Ordinanza_Musumeci.pdf
+    {from: "2021-04-07", to: "2021-04-22", color: "rossa", provincie: ["Palermo"], parentRegion: "sicilia"},
     // https://www.repubblica.it/cronaca/2021/04/09/news/piemonte_toscana_emilia_lombardia_e_friuli_verso_l_arancione-295611654/?ref=tgpr
     {from: "2021-04-12", color: "arancione", regions: ["piemonte","toscana","emiliaromagna","lombardia","friuliveneziagiulia"]},
     {from: "2021-04-12", color: "rossa", regions: ["sardegna"]},
