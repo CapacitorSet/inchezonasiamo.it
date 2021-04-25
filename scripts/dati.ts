@@ -156,6 +156,10 @@ const _data: RuleData[] = [
     {from: "2021-04-12", color: "rossa", provincie: ["Cuneo"], parentRegion: "piemonte"},
     // https://www.repubblica.it/cronaca/2021/04/16/news/colori_delle_regioni_solo_tre_restano_in_rosso_la_campania_diventa_arancione-296639084/
     {from: "2021-04-19", color: "arancione", regions: ["campania"]},
+    // https://www.repubblica.it/cronaca/2021/04/23/news/cabina_di_regia_l_rt_scende_a_0_81_nessuna_regione_in_rosso-297665062/
+    {from: "2021-04-26", color: "rossa", regions: ["sardegna"]},
+    {from: "2021-04-26", color: "arancione", regions: ["calabria", "sicilia", "valdaosta", "basilicata", "puglia"]},
+    {from: "2021-04-26", color: "gialla", regions: ["abruzzo", "campania", "emiliaromagna", "friuliveneziagiulia", "lazio", "liguria", "lombardia", "marche", "molise", "piemonte", "sardegna", "toscana", "umbria", "veneto", "bolzano", "trento"]}
 ];
 
 const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
