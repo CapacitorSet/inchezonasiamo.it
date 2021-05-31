@@ -159,7 +159,19 @@ const _data: RuleData[] = [
     // https://www.repubblica.it/cronaca/2021/04/23/news/cabina_di_regia_l_rt_scende_a_0_81_nessuna_regione_in_rosso-297665062/
     {from: "2021-04-26", color: "rossa", regions: ["sardegna"]},
     {from: "2021-04-26", color: "arancione", regions: ["calabria", "sicilia", "valdaosta", "basilicata", "puglia"]},
-    {from: "2021-04-26", color: "gialla", regions: ["abruzzo", "campania", "emiliaromagna", "friuliveneziagiulia", "lazio", "liguria", "lombardia", "marche", "molise", "piemonte", "sardegna", "toscana", "umbria", "veneto", "bolzano", "trento"]}
+    {from: "2021-04-26", color: "gialla", regions: ["abruzzo", "campania", "emiliaromagna", "friuliveneziagiulia", "lazio", "liguria", "lombardia", "marche", "molise", "piemonte", "toscana", "umbria", "veneto", "bolzano", "trento"]},
+    // https://www.repubblica.it/cronaca/2021/04/30/news/monitoraggio_l_rt_a_0_85_quattro_regioni_sono_in_arancione_e_una_in_rosso_la_puglia_e_in_bilico-298756911/
+    {from: "2021-05-03", color: "rossa", regions: ["valdaosta"]},
+    {from: "2021-05-03", color: "arancione", regions: ["sardegna"]},
+    // https://www.repubblica.it/cronaca/2021/05/06/news/colori_delle_regioni_italia_tutta_gialla_in_arancione_solo_sicilia_e_valle_d_aosta-299575897/
+    {from: "2021-05-10", color: "arancione", regions: ["sicilia", "valdaosta", "sardegna"]},
+    {from: "2021-05-10", color: "gialla", regions: ["calabria", "basilicata", "puglia"]},
+    // https://www.ilpost.it/2021/05/17/coronavirus-italia-colori-regioni-17-maggio/
+    {from: "2021-05-17", color: "gialla", regions: ["sardegna", "sicilia"]},
+    // https://www.adnkronos.com/valle-daosta-zona-gialla-da-lunedi-24-maggio-le-riaperture_14PGTa8oPMdWh6eTN8oQRb
+    {from: "2021-05-24", color: "gialla", regions: ["valdaosta"]},
+    // https://www.repubblica.it/cronaca/2021/05/17/news/coronavirus_il_numero_dei_casi_continua_a_scendere_-28_in_una_settimana-301374104/
+    {from: "2021-06-01", color: "bianca", regions: ["friuliveneziagiulia", "sardegna", "molise"]},
 ];
 
 const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
