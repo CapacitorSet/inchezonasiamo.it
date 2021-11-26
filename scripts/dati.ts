@@ -172,6 +172,15 @@ const _data: RuleData[] = [
     {from: "2021-05-24", color: "gialla", regions: ["valdaosta"]},
     // https://www.repubblica.it/cronaca/2021/05/17/news/coronavirus_il_numero_dei_casi_continua_a_scendere_-28_in_una_settimana-301374104/
     {from: "2021-06-01", color: "bianca", regions: ["friuliveneziagiulia", "sardegna", "molise"]},
+    // https://www.repubblica.it/cronaca/2021/06/06/news/coprifuoco_da_domani_slitta_a_mezzanotte_e_altre_4_regioni_entrano_in_zona_bianca-304405202/
+    {from: "2021-06-07", color: "bianca", regions: ["veneto", "liguria", "umbria", "abruzzo"]},
+    {from: "2021-06-14", color: "bianca", regions: ["emiliaromagna", "lombardia", "lazio", "piemonte", "puglia", "trento"]},
+    // https://www.ilpost.it/2021/06/25/italia-zona-bianca-regioni/
+    {from: "2021-06-28", color: "bianca", any: true},
+    // https://www.repubblica.it/cronaca/2021/08/26/news/sicilia_in_giallo_domani_l_ufficialita_-315357527/
+    {from: "2021-08-30", color: "gialla", regions: ["sicilia"]},
+    {from: "2021-10-09", color: "bianca", regions: ["sicilia"]},
+    {from: "2021-11-29", color: "gialla", regions: ["friuliveneziagiulia"]},
 ];
 
 const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];

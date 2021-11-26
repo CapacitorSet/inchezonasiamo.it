@@ -7,7 +7,7 @@ mixin zona_bianca(nomeRegione, regolaZona)
                 | #{nomeFriendly}: zona bianca
                 if regolaZona.rafforzata /* ??? */
                     |  rafforzata
-            h2.subtitle Spostamenti liberi, rimane l'obbligo di mascherina e distanziamento.
+            h2.subtitle Spostamenti liberi, rimane l'obbligo di mascherina negli ambienti al chiuso e distanziamento.
             .is-hidden-desktop
                 button.button(onclick=`navigator.share({text: 'In ${nomeFriendly} siamo in zona bianca: https://inchezonasiamo.it/${nomeRegione}'})`) Condividi
                 br
@@ -20,5 +20,15 @@ mixin zona_bianca(nomeRegione, regolaZona)
         br
 
         section: ul#ul-zona
-            li Nessuna restrizione a spostamenti, vita quotidiana ed esercizi commerciali
-            li Obbligo di usare la mascherina e di rispettare il distanziamento
+            li Obbligo di usare la mascherina negli ambienti chiusi e di rispettare il distanziamento
+            li Coprifuoco non in vigore
+            +restrizione("car-fill", "Spostamenti")
+                li Sempre permessi gli spostamenti verso zone bianche e gialle; richiesto il green pass verso zone arancioni e rosse; sempre permessi gli spostamenti per lavoro, salute o necessità da giustificare con autocertificazione
+                li Consentite le visite ad abitazioni private per un massimo di 4 persone oltre ai minori
+            +restrizione("shopping-cart-2-fill", "Attività commerciali")
+                li Richiesto il green pass per consumare all'interno dei locali; non richiesto all'aperto o per il servizio al bancone
+                li Richiesto il green pass per centri termali e benessere, parchi divertimento, matrimoni, convegni, sale giochi, sale scommesse.
+            +restrizione("run-fill", "Attività motoria e sportiva")
+                li Richiesto il green pass per le palestre e le piscine al chiuso
+            +restrizione("palette-fill", "Cultura")
+                p Aperti musei, mostre e spettacoli con capienza limitata e con green pass
