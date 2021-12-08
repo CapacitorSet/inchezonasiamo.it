@@ -13,3 +13,6 @@ mixin rule_to_card(rule)
         if (rule.notes != "")
             br
             p: i Nota: #{rule.notes}
+        if (rule.source != undefined)
+            br
+            p: a(href=rule.source) Fonte
