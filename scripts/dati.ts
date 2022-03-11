@@ -143,7 +143,27 @@ const _data: RuleData[] = [
     {from: "2021-08-30", color: "gialla", regions: ["sicilia"], source: "https://www.repubblica.it/cronaca/2021/08/26/news/sicilia_in_giallo_domani_l_ufficialita_-315357527/"},
     { from: "2021-10-09", color: "bianca", regions: ["sicilia"] },
     { from: "2021-11-29", color: "gialla", regions: ["friuliveneziagiulia"] },
-    { from: "2021-12-06", color: "gialla", regions: ["bolzano"], source: "https://www.repubblica.it/cronaca/2021/11/30/news/green_pass_l_alto_adige_da_lunedi_diventa_zona_gialla-328397943/"},
+    /*
+    { from: "2021-12-06", color: "bianca", regions: ["campania", "calabria", "sicilia"], notes: "Obbligo di mascherina anche all'aperto.", source: "https://tg24.sky.it/cronaca/2021/12/06/covid-mascherine-aperto" },
+    { from: "2021-12-06", color: "bianca", parentRegion: "sardegna", comuni: ["Cagliari"], notes: "Obbligo di mascherina anche all'aperto.", source: "https://tg24.sky.it/cronaca/2021/12/06/covid-mascherine-aperto" },
+    { from: "2021-12-06", color: "bianca", parentRegion: "lazio", comuni: ["Roma"], notes: "Obbligo di mascherina anche all'aperto nelle vie dello shopping.", source: "https://tg24.sky.it/cronaca/2021/12/06/covid-mascherine-aperto" },
+    { from: "2021-12-06", color: "bianca", parentRegion: "toscana", comuni: ["Firenze"], notes: "Obbligo di mascherina anche all'aperto in alcuni orari e aree della città.", source: "https://tg24.sky.it/cronaca/2021/12/06/covid-mascherine-aperto" },
+    { from: "2021-12-06", color: "bianca", parentRegion: "liguria", comuni: ["Genova"], notes: "Obbligo di mascherina anche all'aperto in alcune aree della città.", source: "https://tg24.sky.it/cronaca/2021/12/06/covid-mascherine-aperto" },
+    { from: "2021-12-06", color: "bianca", parentRegion: "emiliaromagna", comuni: ["Reggio Emilia"], notes: "Obbligo di mascherina anche all'aperto in alcune aree della città.", source: "https://tg24.sky.it/cronaca/2021/12/06/covid-mascherine-aperto" },
+    { from: "2021-12-06", color: "bianca", parentRegion: "lombardia", comuni: ["Milano", "Pavia"], notes: "Obbligo di mascherina anche all'aperto in alcune aree della città.", source: "https://tg24.sky.it/cronaca/2021/12/06/covid-mascherine-aperto" },
+    { from: "2021-12-06", color: "bianca", parentRegion: "piemonte", comuni: ["Torino"], notes: "Obbligo di mascherina anche all'aperto in alcuni orari e aree della città.", source: "https://tg24.sky.it/cronaca/2021/12/06/covid-mascherine-aperto" },
+    { from: "2021-12-06", color: "bianca", parentRegion: "valdaosta", comuni: ["Aosta"], notes: "Obbligo di mascherina anche all'aperto in alcune aree della città.", source: "https://tg24.sky.it/cronaca/2021/12/06/covid-mascherine-aperto" },
+    */
+    { from: "2021-12-06", color: "gialla", regions: ["bolzano"], source: "https://www.repubblica.it/cronaca/2021/11/30/news/green_pass_l_alto_adige_da_lunedi_diventa_zona_gialla-328397943/" },
+    { from: "2021-12-13", color: "gialla", regions: ["calabria"], source: "https://www.repubblica.it/cronaca/2021/12/10/news/covid_iss_incidenza_sale_da_155_a_176_rt_in_lieve_calo_all_1_18-329633390/" },
+    { from: "2021-12-20", color: "gialla", regions: ["liguria", "veneto", "marche", "trento"], source: "https://www.repubblica.it/cronaca/2021/12/16/news/veneto_liguria_marche_e_trento_vanno_in_giallo-330446091/" },
+    // { from: "2021-12-23", color: "bianca", regions: ["lazio"], notes: "Obbligo di mascherina anche all'aperto.", source: "https://roma.repubblica.it/cronaca/2021/12/18/news/covid_folla_nel_centro_di_roma_chiuso_tratto_via_del_corso-330706840/" },
+    { from: "2022-01-03", color: "gialla", regions: ["lazio", "lombardia", "sicilia", "piemonte"], source: "https://www.ilpost.it/2022/01/01/lazio-lombardia-sicilia-piemonte-zona-gialla/" },
+    { from: "2022-01-10", color: "gialla", regions: ["toscana", "emiliaromagna", "abruzzo", "valdaosta"], source: "https://www.repubblica.it/cronaca/2022/01/07/news/covid_italia_rt_incidenza-332953400/" },
+    { from: "2022-01-17", color: "gialla", regions: ["campania"], source: "https://www.rainews.it/articoli/2022/01/il-ministro-speranza-ha-firmato-lordinanza-val-daosta-in-zona-arancione-campania-in-giallo-bffbe24c-587e-4d1b-afd3-32b8b78f3a18.html" },
+    { from: "2022-01-17", color: "arancione", regions: ["valdaosta"], source: "https://www.rainews.it/articoli/2022/01/il-ministro-speranza-ha-firmato-lordinanza-val-daosta-in-zona-arancione-campania-in-giallo-bffbe24c-587e-4d1b-afd3-32b8b78f3a18.html" },
+    { from: "2021-01-24", color: "arancione", regions: ["abruzzo", "friuliveneziagiulia", "sicilia", "piemonte"], source: "https://www.ilpost.it/2022/01/22/friuli-venezia-giulia-abruzzo-piemonte-sicilia-zona-arancione/" },
+    { from: "2021-02-14", color: "gialla", regions: ["sicilia", "molise"], source: "https://www.ilpost.it/2022/02/11/sicilia-molise-zona-gialla-coronavirus/" },
 ];
 
 const months = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];

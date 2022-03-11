@@ -20,22 +20,29 @@ mixin zona_gialla(nomeRegione, regolaZona)
                 time(pubdate datetime=(new Date().toISOString()))=new Date().toLocaleString("it-IT", {timeZone: "Europe/London", day: '2-digit', month: 'long', hour: 'numeric', minute: 'numeric'})
         br
 
-        // section: ul#ul-zona
-            p Obbligo di usare la mascherina sia al chiuso sia all'aperto e di rispettare il distanziamento
-            p Coprifuoco non in vigore
+        section: ul#ul-zona
+            p Obbligo di usare la mascherina (FFP2 in alcuni luoghi chiusi, FFP2 o chirurgica all'aperto) e di rispettare il distanziamento
+            // li Coprifuoco non in vigore
             +restrizione("car-fill", "Spostamenti")
-                li Sempre permessi gli spostamenti verso zone bianche e gialle; richiesto il green pass verso zone arancioni e rosse; sempre permessi gli spostamenti per lavoro, salute o necessità da giustificare con autocertificazione
-                li Consentite le visite ad abitazioni private per un massimo di 4 persone oltre ai minori
-            +restrizione("run-fill", "Attività motoria e sportiva")
-                li Richiesto il green pass per le palestre e le piscine al chiuso
+                li Sempre permessi gli spostamenti verso zone bianche e gialle; verso zone arancioni, solo spostamenti per lavoro, salute o necessità
+                li Necessario green pass base per trasporto pubblico, treni, navi e aerei
+                li Necessaria mascherina FFP2 sui mezzi pubblici
+            +restrizione("briefcase-fill", "Lavoro")
+                li Necessario green pass base per tutti i lavoratori
+                li Obbligo vaccinale per alcuni lavoratori pubblici
             +restrizione("shopping-cart-2-fill", "Attività commerciali")
-                li Richiesto il green pass per consumare all'interno dei locali; non richiesto all'aperto o per il servizio al bancone
-                li Richiesto il green pass per centri termali e benessere, parchi divertimento, matrimoni, convegni, sale giochi, sale scommesse
+                li Aperte tutte le attività commerciali eccetto discoteche e sale da ballo
+                li Necessario green pass rafforzato per consumare al chiuso
+                li Necessario green pass rafforzato per hotel, centri benessere e termali, parchi divertimento
+                li Necessario green pass rafforzato per centri sociali e ricreativi al chiuso
+                li Chiuse sale da ballo e discoteche fino al 31 gennaio; poi necessaria terza dose, o seconda dose + tampone
+                li Dopo il 31 gennaio necessaria terza dose, o seconda dose + tampone, per accedere a feste o eventi al chiuso
             +restrizione("pencil-fill", "Scuole e università")
-                // p Le scuole dell'infanzia sono sospese.
-                // p Le università sono in didattica a distanza; i singoli atenei possono prevedere eccezioni
+                li Aperte scuole e università
+                li Necessario green pass base per accedere alle università
+            +restrizione("run-fill", "Attività motoria e sportiva")
+                li Aperte palestre e piscine
+                li Necessario green pass base per attività motoria o sportiva al chiuso e per accedere agli spogliatoi
+                li Necessario green pass rafforzato per assistere a competizioni sportive al chiuso
             +restrizione("palette-fill", "Cultura")
-                li Aperti musei, mostre e spettacoli con capienza limitata e con green pass
-            +restrizione("group-fill", "Attività politica e sindacale")
-                li Sono permesse le manifestazioni in forma statica, ed è permesso uscire dal proprio comune per parteciparvi.
-                li Sono permesse le attività e riunioni sindacali.
+                li Necessario green pass base rafforzato per mostre, musei, spettacoli al chiuso
